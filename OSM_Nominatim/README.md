@@ -9,7 +9,7 @@ To run the command `OSM` we must download [duckdb.exe](https://duckdb.org/docs/i
 Instead of changing `*DUCKDB*`, we can place `osm_nominatim.lsp` in the Windows search path.
 
 If we like to use `OSM` in AutoCAD, we need to download [ICONV.EXE](https://en.wikipedia.org/wiki/Iconv) as well.
-Ther is no need for this in BricsCAD/Lite.
+There is no need for this in BricsCAD/Lite.
 
 ## How to use the command "OSM"?
 By entering `OSM` in the command line, we can search for worldwide locations (i.e. places, addresses, streets, countries,...) in OpenStreetMap.
