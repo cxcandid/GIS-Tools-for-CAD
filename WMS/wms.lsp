@@ -82,7 +82,11 @@
   (mapcar (quote (lambda(x) (setvar (car x) (cdr x)))) oldvars)
 )
 
-(defun newerr (msg)
+
+(defun C:WMS (/ newerr olderr sysvars oldvars cfg wmsDir pt pt2 cont crslist servicelist crs wmsservice
+                alist extent minx maxx miny maxy tilesize width height minx2 maxx2 miny2 maxy2 x y)
+
+  (defun newerr (msg)
     (if (or (= msg "Function cancelled") (= msg "quit / exit abort"))
       (princ)
       (princ (strcat "error: " msg))
@@ -91,12 +95,12 @@
     (command-s "_.UNDO" "_End")
     (restoreSysVars oldvars)
     (princ)
-)
-(defun C:WMS (/ olderr sysvars oldvars cfg wmsDir pt pt2 cont crslist servicelist crs wmsservice alist extent minx maxx miny maxy tilesize width height minx2 maxx2 miny2 maxy2 x y)
+  )
+
   (setq olderr *error* 
         *error* newerr
   )
-  
+
   ;save system variables
   (setq sysvars '("CMDECHO" "INSUNITS" "CLAYER" "GRIDSTYLE" "GRIDDISPLAY" "GRIDUNIT" "GRIDMAJOR" "LIMMIN" "LIMMAX" "GRIDMODE"))
   (setq oldvars (mapcar (quote (lambda(x) (cons x (getvar x)))) sysvars))
