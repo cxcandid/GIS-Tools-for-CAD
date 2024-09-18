@@ -55,7 +55,7 @@ The command has the following options:
 | <**Z**>oom to Grid Extents | zooms to the extents of the current map service grid. The grid is only displayed if it is not too tight. |
 
 > [!TIP]
-> enter the letter between the angle brackets to call an option.
+> We can enter the letter between the angle brackets to call an option.
 
 ## How to configure new Map Services?
 For reasons of simplicity, I have chosen AutoLISP as the configuration file format.
@@ -107,7 +107,9 @@ The following table explains all options in detail:
 | imagesize | size of the image tile in pixels. |
 | lambda function | AutoLISP lambda function to calculate the image tile name. Parameters are: `x` pick point x, `y` pick point y, `x0` tile grid origin x, `y0` tile grid origin y, `prefix` tile prefix |
 
-
+> [!TIP]
+> We can add inline comments using the syntax `;| comment |;`.
+         
 Below is an example configuration of 3 map services for Austria:
 
 1. OpenStreetMap (EPSG:31287): simple tile naming scheme (i.e. `osm3846_EPSG31287.tif`)
@@ -117,7 +119,9 @@ Below is an example configuration of 3 map services for Austria:
 `austria.cfg`:
 ```
 (
-  ( ( ("name" . "OpenStreetMap")
+  ( ( ;| OpenStreetMap Tile Map Service - Austria Lambert (EPSG:31287) |;
+      ;| ------------------------------------------------------------- |;
+      ("name" . "OpenStreetMap")
       ("datasource" . "<GDAL_WMS><Service name='TMS'><ServerUrl>https://tile.openstreetmap.org/${z}/${x}/${y}.png</ServerUrl></Service><DataWindow><UpperLeftX>-20037508.34</UpperLeftX><UpperLeftY>20037508.34</UpperLeftY><LowerRightX>20037508.34</LowerRightX><LowerRightY>-20037508.34</LowerRightY><TileLevel>14</TileLevel><TileCountX>1</TileCountX><TileCountY>1</TileCountY><YOrigin>top</YOrigin></DataWindow><Projection>EPSG:3857</Projection><BlockSizeX>256</BlockSizeX><BlockSizeY>256</BlockSizeY><BandsCount>3</BandsCount><Cache/></GDAL_WMS>")
       ("options" . "-co COMPRESS=JPEG -co PHOTOMETRIC=YCBCR -co TILED=YES -co JPEG_QUALITY=95 -r cubic")
       ("srs" . "EPSG:31287")
