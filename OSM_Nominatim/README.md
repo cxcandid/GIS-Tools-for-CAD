@@ -38,4 +38,4 @@ If the result consists of points, OSM inserts the `osm_point` block for each poi
 
 ## Credit
 
-Credit goes to *Alan J. Thomson* (I used his List Select Dialog code), to *Richard Duivenvoorde* (for his idea with the Nominatim Locator Filter for QGIS), to the makers of `DuckDB` and to *Evan Rouault* (master of `GDAL`).
+Credit goes to *Alan J. Thomson* (I used his List Select Dialog code), to *Richard Duivenvoorde* (for his idea with the Nominatim Locator Filter for QGIS), to the makers of `DuckDB` and to *Even Rouault* (master of `GDAL`).
