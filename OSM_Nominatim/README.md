@@ -6,7 +6,7 @@ It utilizes [DuckDB](https://duckdb.org/) and [DuckDB Spatial](https://duckdb.or
 
 ## Installation of required Tools
 To run the command `OSM` we must download [duckdb.exe](https://duckdb.org/docs/installation/?version=stable&environment=cli&platform=win&download_method=direct&architecture=x86_64) and set the global AutoLISP variable `*DUCKDB*` in `osm_nominatim.lsp` to the full path of `duckdb.exe`.
-Instead of changing `*DUCKDB*`, we can place `osm_nominatim.lsp` in the Windows search path.
+Instead of changing `*DUCKDB*`, we can place `duckdb.exe` in the Windows search path.
 
 If we like to use `OSM` in AutoCAD, we need to download [ICONV.EXE](https://en.wikipedia.org/wiki/Iconv) as well.
 There is no need for this in BricsCAD/Lite.
