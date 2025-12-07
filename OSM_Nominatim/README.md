@@ -37,7 +37,7 @@ If the result consists of points, OSM inserts the `osm_point` block for each poi
 > To do a local search (so only within current windows extent), we need to put & in front of the search term (i.e. "&Gmund"). We can even add a country code to the search term to ONLY search that country (i.e. "Gmund at")
 
 ## LWPOLYLINE/POLYLINE vs HATCH
-Polygon, Triangle and MultiPolygon features are written as HATCH entities by default. To write these features as LWPOLYLINE/POLYLINE entities instead, we must set a Windows system variable `DXF_WRITE_HATCH=FALSE`.
+Polygon and MultiPolygon features are written as HATCH entities by default. To write these features as LWPOLYLINE/POLYLINE entities instead, we must set a Windows system variable `DXF_WRITE_HATCH=FALSE`.
 
 ## Credit
 
