@@ -23,8 +23,9 @@
 ;;  Author: Christoph Candido, Copyright © 2024                  ;;
 ;;  (https://github.com/cxcandid)                                ;;
 ;;---------------------------------------------------------------;;
-;;  Version 1.0    -    09-13-2024                               ;;
-;;  Initial implementation                                       ;;
+;;  Versions:                                                    ;;
+;;  1.0 (09-13-2024): initial implementation                     ;;
+;;  1.1 (12-12-2025): added OSMODE=0 to prevent shifting         ;;
 ;;---------------------------------------------------------------;;
 (vl-load-com)
 (regapp "GIS-Tools-for-CAD")
@@ -32,9 +33,9 @@
 ;; *** Define Default Values ***
 ;;(setq *WMS_IMAGE_DIR* (vl-string-right-trim "\\" (getvar "TEMPPREFIX"))) ; set *WMS_IMAGE_DIR* to your Temp directory
 ;(setq *WMS_IMAGE_DIR* "d:\\WMS") ; default Directory to store WMS images
-;(setq *WMS_CFG_FILE* "d:\\WMS\\Config\\wms-at.cfg")
-;(setq *GDALWARP* "G:\\ENG\\Acad\\TOOLS\\GDAL\\gdalwarp.exe")
-(setq *GDALWARP* "C:\\OSGeo4W\\bin\\gdalwarp.exe")
+(setq *WMS* "m:\\WMS") ; default Directory to store WMS images
+(setq *WMS_CFG_FILE* "g:\\eng\\acad\\tools\\civil-survey\\wms-RAG.cfg")
+(setq *GDALWARP* "g:\\eng\\acad\\tools\\gdal\\gdalwarp.exe")
 (setq *WMS_TRANSPARENCY* -1)
 (setq *WMS_BACK* 'T)
 ;; *** End of Default Value Definition ***
@@ -43,13 +44,13 @@
       *WMS_CFG* 'nil
 )
 
-(defun readfile (filename / f line lines)
-  (setq f (open filename "r") ret "")
-  (while (setq line (read-line f))
-    (setq ret (strcat ret (vl-string-left-trim " " line)))
+(defun readfile (filename / f rec res)
+  (setq f (open filename "r") res "")
+  (while (setq rec (read-line f))
+    (setq res (strcat res (vl-string-left-trim " " rec)))
   )
   (close f)
-  ret
+  res
 )
 
 (defun unique ( l )
@@ -102,7 +103,7 @@
   )
 
   ;save system variables
-  (setq sysvars '("CMDECHO" "INSUNITS" "CLAYER" "GRIDSTYLE" "GRIDDISPLAY" "GRIDUNIT" "GRIDMAJOR" "LIMMIN" "LIMMAX" "GRIDMODE"))
+  (setq sysvars '("CMDECHO" "INSUNITS" "CLAYER" "GRIDSTYLE" "GRIDDISPLAY" "GRIDUNIT" "GRIDMAJOR" "LIMMIN" "LIMMAX" "GRIDMODE" "OSMODE"))
   (setq oldvars (mapcar (quote (lambda(x) (cons x (getvar x)))) sysvars))
         
   (setvar "CMDECHO" 0)
@@ -294,7 +295,7 @@
               (setq cont T)
               (while (and cont (< y maxy2))
                 (while (and cont (< x maxx2))
-                  (setq cont (load_wms (list x y) 'nil cfg nil)
+                  (setq cont (load_wms (list (+ x (/ width 2)) (+ y (/ height 2))) 'nil cfg nil)
                            x (+ x width)
                   )
                 )
@@ -450,6 +451,7 @@
             (progn
                 (setq xdata (list (list -3 (list "GIS-Tools-for-CAD" (cons 1000 name)(cons 1000 srs))))) 
                 (command "_.LAYER" "_make" dwglayer "")
+                (setvar "OSMODE" 0)
                 (if (isBrx)
                     (command "_.-imageattach" "_f" wms (strcat (itoa bbox_minx) "," (itoa bbox_miny)) width "0")
                     (command "_.-image" "" wms (strcat (itoa bbox_minx) "," (itoa  bbox_miny)) width "0")
@@ -528,6 +530,7 @@
                             (progn
                                 (setq xdata (list (list -3 (list "GIS-Tools-for-CAD" (cons 1000 *WMS_SERVICE*)(cons 1000 *WMS_EPSG*)))))
                                 (command "_.LAYER" "_make" dwglayer "")
+                                (setvar "OSMODE" 0)
                                 (if (isBrx)
                                     (command "_.-imageattach" "_f" wms (strcat (itoa bbox_minx) "," (itoa bbox_miny)) width "0")
                                     (command "_.-image" "" wms (strcat (itoa bbox_minx) "," (itoa bbox_miny)) width "0")
