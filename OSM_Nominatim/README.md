@@ -27,7 +27,7 @@ The command has two options:
 |         |         |
 | ------- | ------- |
 | <**C**>RS | sets the current coordinate reference system (defined as EPSG code) |
-| Create <H>atch | enables/disables HATCH creation when Polygons/Multipolygons are returned |
+| Create <**H**>atch | enables/disables HATCH creation when Polygons/Multipolygons are returned |
 
 If we enter a search term (i.e. Atzbach), `OSM` sends the query to the global Nominatim search service and shows the results in a dialog window.
 
