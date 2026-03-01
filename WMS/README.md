@@ -6,12 +6,12 @@ Using [GDAL Virtual File Systems](https://gdal.org/en/latest/user/virtual_file_s
 During development, I focused on the open configurability of map services, tile sizes and tile names as well as the ability to exchange drawings with external partners without having to send them the loaded raster tiles.
 
 ## Installation of required GDAL Tools
-To run the command `WMS`, we first need to install GDAL on your system ([GDAL Windows](https://gdal.org/en/latest/download.html#windows)).
+To run the command `WMS`, we first need to install GDAL on our system ([GDAL Windows](https://gdal.org/en/latest/download.html#windows)).
 I use [GISInternals](https://www.gisinternals.com) to install GDAL on my Windows PC, or sometimes call GDAL tools from my [QGIS](https://www.qgis.org) installation. 
-If you open the GISInternals link, go to `Stable Releases` and select a `MSVCxxxx/x64` download page
+When we open the GISInternals link, we have to go to `Stable Releases` and select a `MSVCxxxx/x64` download page
 (i.e. [release-1930-x64-gdal-3-9-1-mapserver-8-2-0](https://www.gisinternals.com/query.html?content=filelist&file=release-1930-x64-gdal-3-9-1-mapserver-8-2-0.zip).
-Then download the generic installer for the GDAL core components (i.e. [gdal-3.9.1-1930-x64-core.msi](https://download.gisinternals.com/sdk/downloads/release-1930-x64-gdal-3-9-1-mapserver-8-2-0/gdal-3.9.1-1930-x64-core.msi)).
-Install GDAL and add the location of the core components to the Windows PATH environment variable, or add the full GDAL path to the line `(setq *GDALWARP* "gdalwarp.exe")` in `wms.lsp`.
+Then we download the generic installer for the GDAL core components (i.e. [gdal-3.9.1-1930-x64-core.msi](https://download.gisinternals.com/sdk/downloads/release-1930-x64-gdal-3-9-1-mapserver-8-2-0/gdal-3.9.1-1930-x64-core.msi)).
+We install GDAL and add the location of the core components to the Windows PATH environment variable, or we can add the full GDAL path to the line `(setq *GDALWARP* "gdalwarp.exe")` in `wms.lsp`.
 
 We must also set additional Windows environment variables:
 
