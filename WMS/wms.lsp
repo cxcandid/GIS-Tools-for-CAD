@@ -33,9 +33,9 @@
 ;; *** Define Default Values ***
 ;;(setq *WMS_IMAGE_DIR* (vl-string-right-trim "\\" (getvar "TEMPPREFIX"))) ; set *WMS_IMAGE_DIR* to your Temp directory
 ;(setq *WMS_IMAGE_DIR* "d:\\WMS") ; default Directory to store WMS images
-(setq *WMS* "m:\\WMS") ; default Directory to store WMS images
-(setq *WMS_CFG_FILE* "g:\\eng\\acad\\tools\\civil-survey\\wms-RAG.cfg")
-(setq *GDALWARP* "g:\\eng\\acad\\tools\\gdal\\gdalwarp.exe")
+(setq *WMS* "d:\\WMS\\images") ; default Directory to store WMS images
+(setq *WMS_CFG_FILE* "d:\\WMS\\config\\wms.cfg")
+(setq *GDALWARP* "c:\\OSGeo4W\\bin\\gdalwarp.exe")
 (setq *WMS_TRANSPARENCY* -1)
 (setq *WMS_BACK* 'T)
 ;; *** End of Default Value Definition ***
